@@ -10,6 +10,11 @@
     warthog_base/launch/base.launch
   -->
 
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+  <VLP-16 name="velodyne" topic="velodyne_points" framename="warthog/velodyne" parent="top_chassis_link" hz="10" samples="365" gpu="true">
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+  </VLP-16>
+
   <!-- If enabled, generate a Novatel Smart6 payload. -->
   <xacro:include filename="accessories/novatel_smart6.urdf.xacro" />
   <xacro:if value="$(optenv WARTHOG_NAVSAT_SMART6 0)">
